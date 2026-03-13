@@ -17,7 +17,9 @@ humanScore = 0
 computerScore = 0
 
 function playRound(humanChoice,computerChoice) {
-    if ((humanChoice == 'rock' && computerChoice == 'scissors') || (humanChoice == 'scissors' && computerChoice == 'paper') || (humanChoice == 'paper' && computerChoice == 'rock')) {
+    if ((humanChoice == 'rock' && computerChoice == 'scissors') 
+        || (humanChoice == 'scissors' && computerChoice == 'paper') 
+        || (humanChoice == 'paper' && computerChoice == 'rock')) {
         humanScore ++
         alert(`You won! ${humanChoice} beats ${computerChoice}`)
     } 
