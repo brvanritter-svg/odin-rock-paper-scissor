@@ -10,6 +10,7 @@ function getComputerChoice() {
 function getHumanChoice() {
     let userInput = prompt("Rock / Paper / Scissors")
     return userInput.toLowerCase()
+
 }
 
 humanScore = 0
@@ -17,20 +18,29 @@ computerScore = 0
 
 function playRound(humanChoice,computerChoice) {
     if ((humanChoice == 'rock' && computerChoice == 'scissors') || (humanChoice == 'scissors' && computerChoice == 'paper') || (humanChoice == 'paper' && computerChoice == 'rock')) {
-        humanScore +=
-        console.log(`You won! ${humanChoice} beats ${computerChoice}`)
+        humanScore ++
+        alert(`You won! ${humanChoice} beats ${computerChoice}`)
     } 
     
     else if (humanChoice == computerChoice) {
-        console.log(`Tie`)
+        alert(`Tie`)
     }
     
     else {
-        computerScore +=
-        console.log(`You lost! ${computerChoice} beats ${humanChoice}`)
+        computerScore++
+        alert(`You lost! ${computerChoice} beats ${humanChoice}`)
     }
 
 }
 
-console.log (playRound(getHumanChoice(),getComputerChoice()))
-console.log ('Human: ' + humanScore + '\nComputer: ' + computerScore)
+while (true) {
+    playRound(getHumanChoice(),getComputerChoice())
+    alert(`Human: ${humanScore}\nComputer: ${computerScore}`)
+    if (computerScore == 5){
+        alert("Computer wins!")
+        break
+    }else if (humanScore == 5) {
+        alert("Human wins!")
+        break
+    }
+}
