@@ -7,42 +7,45 @@ function getComputerChoice() {
         return 'scissors'
 }
 
-function getHumanChoice() {
-    let userInput = prompt("Rock / Paper / Scissors")
-    return userInput.toLowerCase()
+const rock = document.querySelector('#rock-button');
+const paper = document.querySelector('#paper-button');
+const scissors = document.querySelector('#scissor-button');
+const alert = document.createElement('p');
+const body = document.querySelector('body');
+const para2 = document.createElement('p');
 
-}
 
 humanScore = 0
 computerScore = 0
 
 function playRound(humanChoice,computerChoice) {
+
+
+    
     if ((humanChoice == 'rock' && computerChoice == 'scissors') 
         || (humanChoice == 'scissors' && computerChoice == 'paper') 
         || (humanChoice == 'paper' && computerChoice == 'rock')) {
         humanScore ++
-        alert(`You won! ${humanChoice} beats ${computerChoice}`)
+        alert.textContent =`You won! ${humanChoice} beats ${computerChoice}`
     } 
     
     else if (humanChoice == computerChoice) {
-        alert(`Tie`)
+        alert.textContent =`Tie`
     }
     
     else {
         computerScore++
-        alert(`You lost! ${computerChoice} beats ${humanChoice}`)
+        alert.textContent =`You lost! ${computerChoice} beats ${humanChoice}`
     }
+    body.appendChild(alert);
 
+    para2.textContent = `Computer score: ${computerScore} Your score: ${humanScore}`;
+    body.appendChild(para2);
+    
 }
 
-while (true) {
-    playRound(getHumanChoice(),getComputerChoice())
-    alert(`Human: ${humanScore}\nComputer: ${computerScore}`)
-    if (computerScore == 5){
-        alert("Computer wins!")
-        break
-    }else if (humanScore == 5) {
-        alert("Human wins!")
-        break
-    }
-}
+
+
+rock.addEventListener('click', () => playRound('rock',getComputerChoice()));
+paper.addEventListener('click', () => playRound('paper',getComputerChoice()));
+scissors.addEventListener('click', () => playRound('scissors',getComputerChoice()));
